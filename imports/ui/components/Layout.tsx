@@ -7,7 +7,8 @@ import { Container, Row, Col } from "reactstrap";
 export const Layout: React.FC<{
   children: ReactNode;
   isAuthenticated: boolean;
-}> = ({ children, isAuthenticated }) => {
+  isHome: boolean;
+}> = ({ children, isAuthenticated, isHome }) => {
   return (
     <Container fluid>
       <Row>
@@ -16,7 +17,7 @@ export const Layout: React.FC<{
 
       <Row>
         <Col xs="1">
-          <SideNav isAuthenticated={isAuthenticated} />
+          <SideNav isAuthenticated={isAuthenticated} isHome={isHome} />
         </Col>
         <Col style={{ padding: "10px" }}>{children}</Col>
       </Row>

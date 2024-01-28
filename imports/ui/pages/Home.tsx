@@ -7,7 +7,7 @@ interface HomeProps {
 }
 export const Home: React.FC<HomeProps> = ({ isAuthenticated, username }) => {
   return !isAuthenticated ? (
-    <Layout isAuthenticated={isAuthenticated}>
+    <Layout isAuthenticated={isAuthenticated} isHome>
       <div>
         <h1>Home</h1>
         <h2>
@@ -16,7 +16,7 @@ export const Home: React.FC<HomeProps> = ({ isAuthenticated, username }) => {
       </div>
     </Layout>
   ) : (
-    <Layout isAuthenticated={isAuthenticated}>
+    <Layout isAuthenticated={isAuthenticated} isHome>
       <div>
         <h1>Home</h1>
         <h2>Welcome {username} to the IoT Home Page!</h2>
