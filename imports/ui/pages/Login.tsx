@@ -1,18 +1,23 @@
-import { Meteor } from 'meteor/meteor';
-import React, { useState, FormEvent } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { Meteor } from "meteor/meteor";
+import { useTracker } from "meteor/react-meteor-data";
+import React, { useState, FormEvent, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
 export const Login: React.FC = () => {
-  const [username, setUsername] = useState<string>('');
-  const [password, setPassword] = useState<string>('');
+  const [username, setUsername] = useState<string>("");
+  const [password, setPassword] = useState<string>("");
   const navigate = useNavigate();
+  const user = useTracker(() => Meteor.user());
+  useEffect(() => {
+    if (user !== null) navigate("/home");
+  }, [navigate, user]);
 
   const submit = (e: FormEvent) => {
     e.preventDefault();
 
-    const login = Meteor.loginWithPassword(username, password);
-    console.log(login)
-    navigate('/home');
+    Meteor.loginWithPassword(username, password);
+
+    if (user !== null) navigate("/home");
   };
 
   return (
@@ -37,7 +42,9 @@ export const Login: React.FC = () => {
         onChange={(e) => setPassword(e.target.value)}
       />
 
-      <button type="submit" onSubmit={submit}>Log In</button>
+      <button type="submit" onSubmit={submit}>
+        Log In
+      </button>
     </form>
   );
 };
