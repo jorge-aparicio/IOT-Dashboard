@@ -1,15 +1,13 @@
-import React, { useState } from "react";
+import React from "react";
 import { Layout } from "../components/Layout";
-import { Meteor } from "meteor/meteor";
 
 interface HomeProps {
-  user: Meteor.User | null;
+  isAuthenticated: boolean;
+  username: String;
 }
-export const Home: React.FC<HomeProps> = ({ user }) => {
-  const [isAuthenticated] = useState(user !== null);
-
+export const Home: React.FC<HomeProps> = ({ isAuthenticated, username }) => {
   return !isAuthenticated ? (
-    <Layout user={user}>
+    <Layout isAuthenticated={isAuthenticated}>
       <div>
         <h1>Home</h1>
         <h2>
@@ -18,10 +16,10 @@ export const Home: React.FC<HomeProps> = ({ user }) => {
       </div>
     </Layout>
   ) : (
-    <Layout user={user}>
+    <Layout isAuthenticated={isAuthenticated}>
       <div>
         <h1>Home</h1>
-        <h2>Welcome {user?.username} to the IoT Home Page!</h2>
+        <h2>Welcome {username} to the IoT Home Page!</h2>
       </div>
     </Layout>
   );

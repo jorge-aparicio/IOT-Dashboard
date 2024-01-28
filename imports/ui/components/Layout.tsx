@@ -6,17 +6,17 @@ import { Meteor } from "meteor/meteor";
 import { Container, Row, Col } from "reactstrap";
 export const Layout: React.FC<{
   children: ReactNode;
-  user: Meteor.User | null;
-}> = ({ children, user }) => {
+  isAuthenticated: boolean;
+}> = ({ children, isAuthenticated }) => {
   return (
     <Container fluid>
       <Row>
-        <TopNav user={user} />
+        <TopNav isAuthenticated={isAuthenticated} />
       </Row>
 
       <Row>
         <Col xs="1">
-          <SideNav />
+          <SideNav isAuthenticated={isAuthenticated} />
         </Col>
         <Col style={{ padding: "10px" }}>{children}</Col>
       </Row>

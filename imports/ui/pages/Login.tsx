@@ -1,23 +1,23 @@
 import { Meteor } from "meteor/meteor";
-import { useTracker } from "meteor/react-meteor-data";
 import React, { useState, FormEvent, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
-export const Login: React.FC = () => {
+export const Login: React.FC<{ isAuthenticated: boolean }> = ({
+  isAuthenticated,
+}) => {
   const [username, setUsername] = useState<string>("");
   const [password, setPassword] = useState<string>("");
   const navigate = useNavigate();
-  const user = useTracker(() => Meteor.user());
   useEffect(() => {
-    if (user !== null) navigate("/home");
-  }, [navigate, user]);
+    if (isAuthenticated) navigate("/home");
+  }, [navigate, isAuthenticated]);
 
   const submit = (e: FormEvent) => {
     e.preventDefault();
 
     Meteor.loginWithPassword(username, password);
 
-    if (user !== null) navigate("/home");
+    if (isAuthenticated) navigate("/home");
   };
 
   return (
