@@ -17,7 +17,7 @@ export const Dashboard: React.FC<DashboardProps> = ({ isAuthenticated }) => {
   console.log(sensorData);
   return isAuthenticated ? (
     <Layout isAuthenticated={isAuthenticated} isHome={false}>
-      <div>
+      <div style={{ width: "100%" }}>
         <h1 className="page-header">Dashboard</h1>
         <SensorsTable sensors={sensorData as Sensor[]} />
       </div>

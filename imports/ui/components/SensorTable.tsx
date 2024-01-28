@@ -1,6 +1,6 @@
-import React from 'react';
-import { Table } from 'reactstrap';
-import { Sensor } from "../../models/Sensor"
+import React from "react";
+import { Table } from "reactstrap";
+import { Sensor } from "../../models/Sensor";
 
 interface SensorsTableProps {
   sensors: Sensor[];
@@ -17,8 +17,8 @@ const SensorRow: React.FC<Sensor> = ({ _id, timestamp, data }) => (
 );
 
 const SensorsTable: React.FC<SensorsTableProps> = ({ sensors }) => (
-  <div className="table-responsive">
-    <Table striped>
+  <div className="table-responsive" style={{ width: "100%" }}>
+    <Table striped responsive>
       <thead>
         <tr>
           <th>_id</th>

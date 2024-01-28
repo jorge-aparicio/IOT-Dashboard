@@ -16,10 +16,12 @@ export const Layout: React.FC<{
       </Row>
 
       <Row>
-        <Col xs="1">
+        <Col xs={1}>
           <SideNav isAuthenticated={isAuthenticated} isHome={isHome} />
         </Col>
-        <Col style={{ padding: "10px" }}>{children}</Col>
+        <Col xs="11" style={{ paddingTop: "10px", paddingRight: "60px" }}>
+          {children}
+        </Col>
       </Row>
     </Container>
   );
