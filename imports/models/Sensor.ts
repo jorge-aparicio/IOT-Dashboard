@@ -6,7 +6,6 @@ export interface Sensor {
     temperature: number;
     humidity: number;
   };
-  datetime: string;
   timestamp: number;
 
 }
