@@ -1,6 +1,6 @@
 
 import { Meteor } from 'meteor/meteor';
-import { SensorsCollection } from '/imports/api/SensorsCollection';
+// import { SensorsCollection } from '/imports/api/SensorsCollection';
 import { Accounts } from 'meteor/accounts-base';
 
 const SEED_USERNAME = 'meteorite';
@@ -15,12 +15,12 @@ if (!Accounts.findUserByUsername(SEED_USERNAME)) {
     });
   }
 
-  SensorsCollection.allow({
-    'insert': function (userId,doc) {
-      /* user and doc checks ,
-      return true to allow insert */
-      return true; 
-    }
-  });
+  // SensorsCollection.allow({
+  //   'insert': function (userId,doc) {
+  //     /* user and doc checks ,
+  //     return true to allow insert */
+  //     return true; 
+  //   }
+  // });
  
 });

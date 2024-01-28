@@ -1,7 +1,6 @@
-import React, { useState } from "react";
+import React from "react";
 import "bootstrap/dist/css/bootstrap.css";
 import { Navbar, NavbarBrand, Nav, NavItem, NavLink } from "reactstrap";
-import { Meteor } from "meteor/meteor";
 export const TopNav: React.FC<{ isAuthenticated: boolean }> = ({
   isAuthenticated,
 }) => {
